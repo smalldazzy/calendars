@@ -8,7 +8,7 @@ import {
 } from '@microsoft/sp-property-pane';
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
-
+import EventObserver from '../../Observer';
 import * as strings from 'SpEventsWebPartStrings';
 import SpEvents from './components/SpEvents';
 import { ISpEventsProps } from './components/ISpEventsProps';
@@ -46,8 +46,13 @@ export default class SpEventsWebPart extends BaseClientSideWebPart<ISpEventsWebP
     return Version.parse('1.0');
   }
   // protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void{
-  //   if(propertyPath==='url'){
-
+  //   if(propertyPath==='toggleUrl'){
+  //     EventObserver.subscribe((options)=>{
+  //       console.log(options.id);
+  //       this.properties.url=options.id;
+  //     }
+  //       );
+      
   //   }
   // }
 

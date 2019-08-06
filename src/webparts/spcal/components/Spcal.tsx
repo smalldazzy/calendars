@@ -6,7 +6,7 @@ import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { string } from 'prop-types';
 import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-
+import EventObserver from '../../../Observer'
 
 
 export default class Spcal extends React.Component<ISpcalProps, {}> {
@@ -55,7 +55,7 @@ export default class Spcal extends React.Component<ISpcalProps, {}> {
   }
   public calChosen (options) {
     console.log('calendar chosen');
-    console.log(options.id);
+    // console.log(options.id);
    
     localStorage.setItem("calik", JSON.stringify(options.id));
     //console.log(this.properties)
@@ -77,7 +77,9 @@ export default class Spcal extends React.Component<ISpcalProps, {}> {
                 placeholder="Select an option"
                 options={this.state.options}      
                 styles={{label: styles.subTitle}}
-                onChange={(event,options) => this.calChosen(options)}
+                onChange={(event,options) => {
+                  EventObserver.broadcast(options);
+                }}
               ></Dropdown>
             </div>
           </div>

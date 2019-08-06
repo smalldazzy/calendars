@@ -8,7 +8,7 @@ const Events = ({eventsarr}) => {
                 {eventsarr.map(({subject,start,id,location}) => {
                     const date = start.dateTime.split("T")[0];
                     return(
-                        <div key={id}>
+                        <div key={id} className={styles.item}>
                             <div>
                                 <h1>{date}</h1>
                             </div>

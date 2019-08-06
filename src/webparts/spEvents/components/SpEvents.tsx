@@ -4,6 +4,7 @@ import { ISpEventsProps } from './ISpEventsProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { MSGraphClient } from '@microsoft/sp-http';
 import Events from './Event'
+import EventObserver from '../../../Observer'
 
 export default class SpEvents extends React.Component<ISpEventsProps, {}> {
   public state ={
@@ -28,18 +29,22 @@ export default class SpEvents extends React.Component<ISpEventsProps, {}> {
       console.log('autonomka get url');
       console.log(this.props.url);
       this.getEvents(this.props.url);
-    } else {
-      //тут получение id календаря из localstorage 
+    } else if (!this.props.toggleUrl) {
+      EventObserver.subscribe((options)=>{
+        console.log(options.id);
+        this.getEvents(options.id)
+      });
     }
   }
   public componentWillReceiveProps(){
     this.checkPane();
+    this.render();
   }
   public componentDidMount(){
+    this.checkPane();
     // this.getEvents('AAMkAGM4MDk1ZjJjLTE4MWEtNDZhZi05YzQyLWEwZjJmMTdkNDFhMwBGAAAAAAAjzoEC7VvfQo2YFXzQdnhJBwAR8p2eMi9dRYZp2VOh30EKAAAAAAEGAAAR8p2eMi9dRYZp2VOh30EKAAABKZO8AAA=');
   }
   public render(): React.ReactElement<ISpEventsProps> {
-    this.checkPane();
     // this.getEvents(this.props.url);
     return (
       <div className={ styles.spEvents }>
