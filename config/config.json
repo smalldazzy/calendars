@@ -9,10 +9,20 @@
           "manifest": "./src/webparts/spcal/SpcalWebPart.manifest.json"
         }
       ]
+    },
+    "sp-events-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spEvents/SpEventsWebPart.js",
+          "manifest": "./src/webparts/spEvents/SpEventsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "SpcalWebPartStrings": "lib/webparts/spcal/loc/{locale}.js"
+    "SpcalWebPartStrings": "lib/webparts/spcal/loc/{locale}.js",
+    "SpEventsWebPartStrings": "lib/webparts/spEvents/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

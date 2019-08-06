@@ -29,7 +29,7 @@ export default class Spcal extends React.Component<ISpcalProps, {}> {
               userName: user.displayName,
               userMail: user.mail
             });
-          }).then(()=>console.log(this.state));
+          });
       });
   }
   public getCalendars(){
@@ -50,7 +50,7 @@ export default class Spcal extends React.Component<ISpcalProps, {}> {
             this.setState({
               options:options
             });
-          }).then(()=>console.log(this.state));
+          });
       });
   }
   public calChosen (options) {
@@ -75,15 +75,7 @@ export default class Spcal extends React.Component<ISpcalProps, {}> {
               <Dropdown
                 label='Calendars Dropdown'
                 placeholder="Select an option"
-                options={this.state.options
-                  // [
-                  // {key: 1, text: 'raz'},
-                  // {key: 2, text: 'dva'},
-                  // {key: 3, text: 'tri'},
-                  // ]
-                }
-                // properties={this.state.dropprops}
-              
+                options={this.state.options}      
                 styles={{label: styles.subTitle}}
                 onChange={(event,options) => this.calChosen(options)}
               ></Dropdown>
