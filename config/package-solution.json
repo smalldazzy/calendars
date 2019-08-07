@@ -3,7 +3,7 @@
   "solution": {
     "name": "sp-calendar-client-side-solution",
     "id": "9d3f81ab-637b-4118-9f7f-018d23b66ade",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [

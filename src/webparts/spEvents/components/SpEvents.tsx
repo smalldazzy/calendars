@@ -18,7 +18,6 @@ export default class SpEvents extends React.Component<ISpEventsProps, {}> {
         client
           .api(`/me/calendars/${calId}/events?$select=subject,body,bodyPreview,organizer,attendees,start,end,location`)
           .get((error, events, rawResponse?: any) => {
-            // let options=[];
             console.log(events.value.slice(-3));
             this.setState({events: events.value.slice(-3)});
           });
@@ -30,6 +29,7 @@ export default class SpEvents extends React.Component<ISpEventsProps, {}> {
       console.log(this.props.url);
       this.getEvents(this.props.url);
     } else if (!this.props.toggleUrl) {
+      console.log('conn', this.props.toggleUrl);
       EventObserver.subscribe((options)=>{
         console.log(options.id);
         this.getEvents(options.id)
@@ -38,14 +38,12 @@ export default class SpEvents extends React.Component<ISpEventsProps, {}> {
   }
   public componentWillReceiveProps(){
     this.checkPane();
-    this.render();
   }
   public componentDidMount(){
     this.checkPane();
     // this.getEvents('AAMkAGM4MDk1ZjJjLTE4MWEtNDZhZi05YzQyLWEwZjJmMTdkNDFhMwBGAAAAAAAjzoEC7VvfQo2YFXzQdnhJBwAR8p2eMi9dRYZp2VOh30EKAAAAAAEGAAAR8p2eMi9dRYZp2VOh30EKAAABKZO8AAA=');
   }
   public render(): React.ReactElement<ISpEventsProps> {
-    // this.getEvents(this.props.url);
     return (
       <div className={ styles.spEvents }>
         <div className={ styles.container }>
